@@ -87,8 +87,10 @@ public class TableGUI extends JFrame {
 				x=x+50;	
 			}
 			y=y+50;
-		}
+		}   
 		
+		//newwwwwwwwwwwwwwwwwwwwwwwwwwwww
+	//	JButton[][] buttons =new JButton[size][size];
 		
 		for(count0=0;count0<size;count0++) {
 			if(size==4) {

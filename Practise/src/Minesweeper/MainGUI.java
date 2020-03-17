@@ -65,7 +65,7 @@ public class MainGUI extends JFrame {
 				takeSizeTableFromComboBox();
 				dispose();
 				setVisible(false);
-				TableGUI tableGUIobject = new TableGUI();
+				TableGUI1 tableGUIobject = new TableGUI1();
 				tableGUIobject.setVisible(true);
 				tableGUIobject.initialize(sizeTable);
 			}
