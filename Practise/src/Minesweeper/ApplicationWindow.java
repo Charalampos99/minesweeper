@@ -25,7 +25,6 @@ public class ApplicationWindow {
 			public void run() {
 				try {
 					ApplicationWindow window = new ApplicationWindow();
-					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,7 +36,7 @@ public class ApplicationWindow {
 		initialize();
 	}
 	
-	private void initialize() {
+	public void initialize() {
 		MainGUI objectMainGUI1 = new MainGUI();
 		objectMainGUI1.setVisible(true);
 		

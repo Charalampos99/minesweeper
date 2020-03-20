@@ -3,13 +3,13 @@ package Minesweeper;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Table1 {
+public class TableElements {
 	private ArrayList<Integer> xCoordinate; 
 	private ArrayList<Integer> yCoordinate; 
 	private int sizeTable;  
 	private int countBomb;
 	
-	public Table1(int sizeTable) {
+	public TableElements(int sizeTable) {
 		this.sizeTable=sizeTable;
 		countBomb = sizeTable*sizeTable/3 -1;
 	}

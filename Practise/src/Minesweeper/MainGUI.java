@@ -22,19 +22,6 @@ public class MainGUI extends JFrame {
 	private JComboBox comboBox;
 	private int sizeTable;
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainGUI frame = new MainGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public MainGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(600, 100, 900, 900);
@@ -65,7 +52,7 @@ public class MainGUI extends JFrame {
 				takeSizeTableFromComboBox();
 				dispose();
 				setVisible(false);
-				TableGUI1 tableGUIobject = new TableGUI1();
+				TableGUI tableGUIobject = new TableGUI();
 				tableGUIobject.setVisible(true);
 				tableGUIobject.initialize(sizeTable);
 			}
@@ -74,7 +61,7 @@ public class MainGUI extends JFrame {
 		contentPane.add(btnPlay);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("/home/boss/eclipse-workspace/Practise/image/bomb1.jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon("/home/boss/git/minesweeper/Practise/image/bomb1.jpg"));
 		lblNewLabel_2.setBounds(223, 210, 535, 641);
 		contentPane.add(lblNewLabel_2);
 		

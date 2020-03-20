@@ -1,5 +1,5 @@
 package Minesweeper;
-
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,20 +19,20 @@ public class Button {
 	private JButton button;
 	private JPanel contentPane;
 	private int countBomb ;
-	private static int countWin;
+	private static int countWin =0;
+	private TableGUI frame;
 	
 	public Button(int sizeTable,int xPosition ,
 		int yPosition ,JPanel contentPane,
-		int elementButton ){
+		int elementButton, TableGUI frame){
 		this.sizeTable=sizeTable;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.contentPane=contentPane;
 		this.elementButton = elementButton;	
 		countBomb = sizeTable*sizeTable/3 -1;
-		createButton();
-		
-		
+		this.frame= frame;
+		createButton();	
 	}
 	
 	public void createButton() {
@@ -46,12 +46,19 @@ public class Button {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				removeButton();
-				countWin++;
 				if(checkIfExistBomb()) {
 					createNewGuiExplosion();
+					countWin=0;
 				}else {
-					if(countWin==countBomb) {
+					countWin++;
+					System.out.println(countWin +"          dsfsfa");
+					if(countWin==(sizeTable*sizeTable-countBomb)) {
+						ExplosionOrWinGUI explosionGUIobject = new ExplosionOrWinGUI(1);
+						explosionGUIobject.setVisible(true);
+						frame.dispose1();
+						countWin = 0;
 						System.out.println("You are winner");
+						System.out.println(countWin + "  " + (sizeTable*sizeTable-countBomb));
 					}else{
 						replaceButtonWithLabel();
 					}
@@ -61,7 +68,6 @@ public class Button {
 			}
 		});
 	}
-	
 	public void removeButton() {
 		contentPane.remove(button);
 		contentPane.revalidate();
@@ -74,8 +80,10 @@ public class Button {
 		return false;
 	}
 	public void createNewGuiExplosion(){
-		ExplosionGUI explosionGUIobject = new ExplosionGUI();
-		explosionGUIobject.setVisible(true);	
+		ExplosionOrWinGUI explosionGUIobject = new ExplosionOrWinGUI(0);
+		explosionGUIobject.setVisible(true);
+		frame.dispose1();
+		
 	}
 	
 	public void replaceButtonWithLabel() {
@@ -85,5 +93,7 @@ public class Button {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD,20));
 		lblNewLabel.setBounds(xPosition, yPosition, 50, 50);
 		contentPane.add(lblNewLabel);
-	}	
+	}
+	
+	
 }

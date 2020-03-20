@@ -12,30 +12,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class ExplosionGUI extends JFrame {
+public class ExplosionOrWinGUI extends JFrame {
 
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ExplosionGUI frame = new ExplosionGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ExplosionGUI() {
+	private static JPanel contentPane;
+	
+	private int flagWinOrLoose;
+	
+	
+	public ExplosionOrWinGUI(int flagWinOrLoose) {
+		this.flagWinOrLoose = flagWinOrLoose;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(600, 100, 900, 900);
 		contentPane = new JPanel();
@@ -43,11 +29,29 @@ public class ExplosionGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("/home/boss/git/minesweeper/Practise/image/explotion.png"));
-		lblNewLabel_1.setBounds(5, 23, 839, 509);
-		contentPane.add(lblNewLabel_1);
+		selectPicture();
+		setRestartButton();
+		setEndButton();
 		
+	}
+	
+	public void selectPicture() {
+		String pictureDestination;
+		int xStartPicture;
+		if(flagWinOrLoose == 0) {
+			pictureDestination = "/home/boss/git/minesweeper/Practise/image/explotion.png";
+			xStartPicture =5;
+		}else {
+			pictureDestination = "/home/boss/git/minesweeper/Practise/image/winBomb.jpg";
+			xStartPicture = 155;
+		}
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(pictureDestination));
+		lblNewLabel_1.setBounds(xStartPicture, 23, 839, 509);
+		contentPane.add(lblNewLabel_1);
+	}
+	
+	public void setRestartButton() {
 		JButton btnNewButton = new JButton("RESTART");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -63,7 +67,9 @@ public class ExplosionGUI extends JFrame {
 		});
 		btnNewButton.setBounds(120, 600, 200, 50);
 		contentPane.add(btnNewButton);
-		
+	}
+	
+	public void setEndButton() {
 		JButton btnNewButton_1 = new JButton("END GAME");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -72,5 +78,6 @@ public class ExplosionGUI extends JFrame {
 		});
 		btnNewButton_1.setBounds(517, 600, 200, 50);
 		contentPane.add(btnNewButton_1);
+		
 	}
 }
